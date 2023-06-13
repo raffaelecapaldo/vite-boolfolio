@@ -1,38 +1,41 @@
 <template>
-  <div class="container">
-    <div class="row mt-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div v-for="project in projects" class="col-12 col-sm-6 d-flex justify-content-center mb-3">
+        <div class="card" style="width: 22rem;">
+          <div class="monitor position-relative">
+            <img class="card-img-top  matrix-monitor img-fluid " src="images/matrix.png" alt="">
 
-      <div v-for="project in projects" class="preview-card">
-        <div class="preview-card__wrp">
-          <div class="preview-card__item">
-            <div class="preview-card__img">
-              <img
-                :src="project.image_url"
-                alt="">
+            <div class="project-image position-absolute">
+              <img :src="project.image_url" class="card-img-top project-image img-fluid position-absolute" alt="...">
             </div>
-            <div class="preview-card__content">
+        </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ project.name }}</h5>
+            <p v-html="project.description" class="card-text"></p>
+            <div class="languages mb-2">
               <span v-for="language in project.languages" :style="{ 'background-color': language.badge_color }"
                 class="badge me-1">{{ language.name }}</span>
-              <div class="preview-card__title">{{ project.name }}</div>
-              <div v-html="project.description" class="preview-card__text"></div>
-              <a :href="project.repo_url" class="preview-card__button text-uppercase">repository</a>
-            </div>
+            </div >
+            <div class="buttons d-flex justify-content-center">
+            <a :href="project.repo_url" class="btn btn-primary">Repository</a>
           </div>
-
+          </div>
+          
         </div>
+        
       </div>
-
+      
     </div>
     <nav class="mt-2">
-    <ul class="pagination">
-      <li class="page-item"><a @click="previousPage" class="page-link" href="#">Previous</a></li>
-      <li v-for="n in lastPage" @click="changePage(n)" :class="{ 'active': n === currentPage }" class="page-item"><a
-          class="page-link" href="#">{{ n }}</a></li>
-      <li class="page-item"><a @click="nextPage()" class="page-link" href="#">Next</a></li>
-    </ul>
-  </nav>
+      <ul class="pagination d-flex justify-content-center">
+        <li class="page-item"><a @click="previousPage" class="page-link" href="#">Previous</a></li>
+        <li v-for="n in lastPage" @click="getProjects(n)" :class="{ 'active': n === currentPage }" class="page-item"><a
+            class="page-link" href="#">{{ n }}</a></li>
+        <li class="page-item"><a @click="nextPage()" class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
   </div>
- 
 </template>
 
 <script>
@@ -90,4 +93,38 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use './assets/styles/partials/variables' as *;
+
+.card {
+  background-color: $darkgrey;
+  color:$lightgrey;
+.card-title {
+  color:white;
+}
+  .btn {
+    width: 200px;
+    background-color: $buttonscolor;
+    border-color:$bgcolor;
+  }
+  .project-image {
+    top: 8px;
+    left: 11px;
+    width: 94%;
+    height: 94%;
+  }
+}
+
+.monitor {
+  width: 100%;
+}
+
+@media screen and (max-width:624px) and (min-width:576px) {
+  .card {
+  .project-image
+  {
+    width: 92%;
+    height: 92%;
+  }
+}}
+</style>
