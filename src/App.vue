@@ -1,30 +1,38 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div v-for="project in projects" class="col-2">
-        <div class="card" style="width: 18rem;">
-          <img :src="project.image_url" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{ project.name }}</h5>
-            <p v-html="project.description" class="card-text"></p>
-            <div class="languages mb-2">
+  <div class="container">
+    <div class="row mt-5">
+
+      <div v-for="project in projects" class="preview-card">
+        <div class="preview-card__wrp">
+          <div class="preview-card__item">
+            <div class="preview-card__img">
+              <img
+                :src="project.image_url"
+                alt="">
+            </div>
+            <div class="preview-card__content">
               <span v-for="language in project.languages" :style="{ 'background-color': language.badge_color }"
                 class="badge me-1">{{ language.name }}</span>
+              <div class="preview-card__title">{{ project.name }}</div>
+              <div v-html="project.description" class="preview-card__text"></div>
+              <a :href="project.repo_url" class="preview-card__button text-uppercase">repository</a>
             </div>
-            <a :href="project.repo_url" class="btn btn-primary">Repository</a>
           </div>
+
         </div>
       </div>
+
     </div>
     <nav class="mt-2">
-      <ul class="pagination">
-        <li class="page-item"><a @click="previousPage" class="page-link" href="#">Previous</a></li>
-        <li v-for="n in lastPage" @click="getProjects(n)" :class="{ 'active': n === currentPage }" class="page-item"><a
-            class="page-link" href="#">{{ n }}</a></li>
-        <li class="page-item"><a @click="nextPage()" class="page-link" href="#">Next</a></li>
-      </ul>
-    </nav>
+    <ul class="pagination">
+      <li class="page-item"><a @click="previousPage" class="page-link" href="#">Previous</a></li>
+      <li v-for="n in lastPage" @click="getProjects(n)" :class="{ 'active': n === currentPage }" class="page-item"><a
+          class="page-link" href="#">{{ n }}</a></li>
+      <li class="page-item"><a @click="nextPage()" class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
   </div>
+ 
 </template>
 
 <script>
