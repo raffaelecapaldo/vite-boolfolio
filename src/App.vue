@@ -26,7 +26,7 @@
     <nav class="mt-2">
     <ul class="pagination">
       <li class="page-item"><a @click="previousPage" class="page-link" href="#">Previous</a></li>
-      <li v-for="n in lastPage" @click="getProjects(n)" :class="{ 'active': n === currentPage }" class="page-item"><a
+      <li v-for="n in lastPage" @click="changePage(n)" :class="{ 'active': n === currentPage }" class="page-item"><a
           class="page-link" href="#">{{ n }}</a></li>
       <li class="page-item"><a @click="nextPage()" class="page-link" href="#">Next</a></li>
     </ul>
@@ -75,6 +75,10 @@ export default {
       else {
         this.currentPage--;
       }
+      this.getProjects(this.currentPage);
+    },
+    changePage(page) {
+      this.currentPage = page;
       this.getProjects(this.currentPage);
     }
 
