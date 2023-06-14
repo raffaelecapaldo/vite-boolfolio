@@ -1,5 +1,5 @@
 <template>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xxl-3 d-flex justify-content-center mb-3">
+        <div class="col-12 pe-1 col-sm-6 col-md-6 col-lg-4 col-xxl-3 d-flex justify-content-center mb-3">
           <div class="card" style="width: 22rem;">
             <div class="monitor position-relative">
               <img class="card-img-top  matrix-monitor img-fluid " src="images/matrix.png" alt="">
@@ -16,7 +16,7 @@
                   class="badge me-1">{{ language.name }}</span>
               </div >
               <div class="buttons d-flex justify-content-center">
-              <a :href="project.repo_url" class="btn btn-primary">Repository</a>
+              <a :href="project.repo_url" class="btn btn-primary">Visualizza</a>
             </div>
             </div>
             
@@ -42,7 +42,7 @@
   
   .card {
     background-color: $darkgreen;
-    color:$lighgreen;
+    color:$lightgreen;
   .card-title {
     color:white;
   }
