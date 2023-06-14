@@ -11,7 +11,14 @@
     </div>
     <div class="project-body">
         <div class="container-fluid">
+            <div class="languages py-2">
+                <span v-for="language in store.project.languages" :style="{ 'background-color': language.badge_color }"
+                  class="badge me-1">{{ language.name }}</span>
+            </div>
             <p v-html="store.project.description"></p>
+            <div class="buttons d-flex justify-content-center">
+              <a :href="store.project.repo_url" class="btn btn-primary">Repository</a>
+            </div>
         </div>
         </div>
     </div>
@@ -41,6 +48,12 @@
 
 
 .project {
+    .btn {
+      width: 40%;
+      background-color: $buttonscolor;
+      border-color:$bgcolor;
+      margin-bottom:30px;
+    }
     .project-image {
         img {
             border-radius: 4px;
