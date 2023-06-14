@@ -1,5 +1,6 @@
 <template>
-    <div class="project">
+        <Loading v-if="store.loading"/>
+    <div v-else class="project">
         <div class="project-title d-flex justify-content-center">
             <h1>{{ store.project.name }}</h1>
         </div>
@@ -23,12 +24,15 @@
         </div>
     </div>
 </template>
-
 <script>
   import { store } from '../data/store';
+  import Loading from '../components/Loading.vue';
 
     export default {
     name:"Project",
+    components: {
+        Loading,
+    },
     data() {
         return {
             store,
