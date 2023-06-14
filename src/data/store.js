@@ -1,5 +1,7 @@
 import { reactive } from 'vue';
 import axios from 'axios';
+import router from '../router/index'
+
 
 
 export const store = reactive({
@@ -15,6 +17,9 @@ export const store = reactive({
             }
 
             store.loading = false;
+            if (!res.data.success) {
+                router.push({ name: 'NotFound' });
+            }
 
         })
     },
