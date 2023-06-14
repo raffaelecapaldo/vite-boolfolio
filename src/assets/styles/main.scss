@@ -11,3 +11,38 @@ $fa-font-path: '../webfonts';
 body {
   background-color: $bgcolor;
 }
+
+.pagination {
+  .disabled {
+    --bs-pagination-disabled-bg:rgb(92, 90, 90);
+    --bs-pagination-disabled-color:$darkgreen;
+    }
+}
+
+.pagination > li > a
+{
+    background-color: black;
+    color: white;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+  background-color: $lighgreen !Important;
+  color:white;
+}
+
+.pagination > .active > a
+{
+  background-color: $darkgreen !Important;
+  color:white;
+  border:1px solid white;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: $darkgreen !Important;
+    color:white;
+}
