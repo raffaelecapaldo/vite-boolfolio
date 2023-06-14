@@ -9,7 +9,7 @@
         
       </div>
       <nav class="mt-2">
-        <ul class="pagination d-flex justify-content-center">
+        <ul class="pagination d-flex justify-content-center pb-4">
           <li v-for="link in store.links" @click="changePage(link)" :class="{ 'active' : link.active, 'disabled' : link.url === null }" class="page-item"><a
               class="page-link" href="#" v-html="link.label"></a></li>
         
@@ -30,7 +30,7 @@
     },
     data() {
       return {
-        link: 'http://localhost:8000/api/projects',
+        link: 'http://192.168.1.100:8000/api/projects',
         projects: [],
         info: [],
         links: [],
