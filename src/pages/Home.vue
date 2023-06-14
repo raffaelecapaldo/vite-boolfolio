@@ -6,7 +6,7 @@
       </div>
       <nav class="mt-2">
         <ul class="pagination d-flex justify-content-center">
-          <li v-for="link in store.links" @click="store.changePage(link)" :class="{ 'active' : link.active, 'disabled' : link.url === null }" class="page-item"><a
+          <li v-for="link in store.links" @click="changePage(link)" :class="{ 'active' : link.active, 'disabled' : link.url === null }" class="page-item"><a
               class="page-link" href="#" v-html="link.label"></a></li>
         
         </ul>
