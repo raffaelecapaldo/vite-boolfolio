@@ -1,7 +1,5 @@
 <template>
-    <div v-if="store.loading">
-        <h3>AAAAA</h3>
-    </div>
+    <Loading v-if="store.loading"/>
     <div v-else class="container-fluid">
       <div class="row">
        <Card v-for="project in store.projects" :project="project"/>
@@ -19,11 +17,13 @@
   
   <script>
   import Card from '../components/Card.vue';
+  import Loading from '../components/Loading.vue'
   import { store } from '../data/store';
   export default {
     name: 'Home',
     components: {
         Card,
+        Loading,
     },
     data() {
       return {
