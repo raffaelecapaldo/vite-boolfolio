@@ -31,6 +31,6 @@ export default {
 
 .loader {
     font-size:3rem;
-    color:$darkgrey;
+    color:$darkgreen;
 }
 </style>

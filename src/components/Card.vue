@@ -41,8 +41,8 @@
 @use '../assets/styles/partials/variables' as *;
   
   .card {
-    background-color: $darkgrey;
-    color:$lightgrey;
+    background-color: $darkgreen;
+    color:$lighgreen;
   .card-title {
     color:white;
   }
