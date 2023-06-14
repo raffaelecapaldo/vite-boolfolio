@@ -6,10 +6,9 @@
       </div>
       <nav class="mt-2">
         <ul class="pagination d-flex justify-content-center">
-          <li class="page-item"><a @click="previousPage" class="page-link" href="#">Previous</a></li>
-          <li v-for="n in lastPage" @click="getProjects(n)" :class="{ 'active': n === currentPage }" class="page-item"><a
-              class="page-link" href="#">{{ n }}</a></li>
-          <li class="page-item"><a @click="nextPage()" class="page-link" href="#">Next</a></li>
+          <li v-for="link in links" @click="changePage(link)" :class="{ 'active' : link.active, 'disabled' : link.url === null }" class="page-item"><a
+              class="page-link" href="#" v-html="link.label"></a></li>
+        
         </ul>
       </nav>
     </div>
@@ -26,46 +25,33 @@
     },
     data() {
       return {
-        title: 'Hello World',
-        apiUrl: 'http://localhost:8000/api',
-        currentPage: 1,
-        firstPage: 1,
-        lastPage: null,
+        link: 'http://localhost:8000/api/projects',
         projects: [],
         info: [],
+        links: [],
       }
     },
     methods: {
-      getProjects(pageNumber) {
-        axios.get(`${this.apiUrl}/projects`, { params: { 'page': pageNumber } }).then((res) => {
+      getProjects(apiLink) {
+        axios.get(apiLink).then((res) => {
           this.projects = res.data.results.data;
-          this.currentPage = res.data.results.current_page;
-          this.lastPage = res.data.results.last_page
+          this.links = res.data.results.links
   
         })
       },
-      nextPage() {
-        if (this.currentPage === this.lastPage) {
-          this.currentPage = this.firstPage;
+      //Per disabilitare @click e non solo applicare disabled sul CSS
+      changePage(link) {
+        if (link.url) {
+            this.getProjects(link.url)
         }
         else {
-          this.currentPage++
+            return
         }
-        this.getProjects(this.currentPage);
-      },
-      previousPage() {
-        if (this.currentPage === this.firstPage) {
-          this.currentPage = this.lastPage;
-        }
-        else {
-          this.currentPage--;
-        }
-        this.getProjects(this.currentPage);
+
       }
-  
     },
     created() {
-      this.getProjects(this.currentPage);
+      this.getProjects(this.link);
     }
   
   }
