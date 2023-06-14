@@ -1,5 +1,5 @@
 <template>
-    <div class="col-12 pe-1 col-md-4 col-lg-3 col-md-4 col-sm-6 col-xxl-2 d-flex justify-content-center mb-3">
+    <div class="col-12 pe-1 col-md-4 col-lg-3 col-md-4 col-sm-6 col-xxl-2 d-flex justify-content-center mb-5">
         <div class="card" style="width: 22rem;">
             <div class="monitor">
                 <img class="inside-image" :src="project.image_url" alt="">
@@ -85,6 +85,7 @@ export default {
 
 .card {
     min-width: 374px;
+    margin-right:15px;
 }
 }
 </style>
