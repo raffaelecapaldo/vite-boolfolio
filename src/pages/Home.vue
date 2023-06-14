@@ -1,5 +1,8 @@
 <template>
-    <div class="container-fluid">
+    <div v-if="store.loading">
+        <h3>AAAAA</h3>
+    </div>
+    <div v-else class="container-fluid">
       <div class="row">
        <Card v-for="project in store.projects" :project="project"/>
         
