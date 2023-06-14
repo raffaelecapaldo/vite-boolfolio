@@ -1,5 +1,5 @@
 <template>
-        <div class="col-12 col-sm-6 d-flex justify-content-center mb-3">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xxl-3 d-flex justify-content-center mb-3">
           <div class="card" style="width: 22rem;">
             <div class="monitor position-relative">
               <img class="card-img-top  matrix-monitor img-fluid " src="images/matrix.png" alt="">
@@ -10,7 +10,7 @@
           </div>
             <div class="card-body">
               <h5 class="card-title">{{ project.name }}</h5>
-              <p v-html="project.description" class="card-text"></p>
+              <MatrixDescription :description="project.description"/>
               <div class="languages mb-2">
                 <span v-for="language in project.languages" :style="{ 'background-color': language.badge_color }"
                   class="badge me-1">{{ language.name }}</span>
@@ -26,9 +26,13 @@
 </template>
 
 <script>
+  import MatrixDescription from '../components/MatrixDescription.vue'
     export default {
         name: 'Card',
-        props: ['project']
+        props: ['project'],
+        components: {
+            MatrixDescription
+        }
         
     }
 </script>
