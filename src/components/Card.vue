@@ -1,12 +1,8 @@
 <template>
-    <div class="col-12 pe-1 col-sm-6 col-md-6 col-lg-4 col-xxl-3 d-flex justify-content-center mb-3">
+    <div class="col-12 pe-1 col-md-4 col-lg-3 col-md-4 col-sm-6 col-xxl-2 d-flex justify-content-center mb-3">
         <div class="card" style="width: 22rem;">
-            <div class="monitor position-relative">
-                <img class="card-img-top  matrix-monitor img-fluid " src="images/matrix.png" alt="">
-
-                <div class="project-image position-absolute">
-                    <img :src="project.image_url" class="card-img-top project-image img-fluid position-absolute" alt="...">
-                </div>
+            <div class="monitor">
+                <img class="inside-image" :src="project.image_url" alt="">
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ project.name }}</h5>
@@ -46,6 +42,7 @@ export default {
     background-color: $darkgreen;
     color: $lightgreen;
 
+
     .card-title {
         color: white;
     }
@@ -65,14 +62,29 @@ export default {
 }
 
 .monitor {
-    width: 100%;
+    border-image-slice: 28 27 30 30;
+    border-image-width: 13px 13px 13px 13px;
+    border-image-outset: 12px 1px 10px 0px;
+    border-image-repeat: repeat repeat;
+    border-image-source: url("images/matrix.png");
 }
 
-@media screen and (max-width:624px) and (min-width:576px) {
-    .card {
-        .project-image {
-            width: 92%;
-            height: 92%;
-        }
-    }
-}</style>
+.inside-image {
+    translate: 12px;
+    width: 92%;
+    height: 165px;
+    object-fit: cover;
+}
+
+
+@media screen and (max-width:576px) {
+    .inside-image {
+    width: 94%;
+
+}
+
+.card {
+    min-width: 374px;
+}
+}
+</style>

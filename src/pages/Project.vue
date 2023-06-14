@@ -1,17 +1,18 @@
 <template>
         <Loading v-if="store.loading"/>
     <div v-else class="project">
-        <div class="project-title d-flex justify-content-center">
-            <h1>{{ store.project.name }}</h1>
+    
+        <div class="container">
+            <div class="project-title d-flex justify-content-center align-items-center">
+            <h1 class="m-0">{{ store.project.name }}</h1>
         </div>
-        <div class="container-fluid">
-        <div class="project-image mt-2 mb-3">
+        <div class="project-image mb-3">
             <img class="img-fluid" :src="store.project.image_url" alt="">
         </div>
 
     </div>
     <div class="project-body">
-        <div class="container-fluid">
+        <div class="container">
             <div class="languages py-2">
                 <span v-for="language in store.project.languages" :style="{ 'background-color': language.badge_color }"
                   class="badge me-1">{{ language.name }}</span>

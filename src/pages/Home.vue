@@ -1,6 +1,9 @@
 <template>
     <Loading v-if="store.loading"/>
     <div v-else class="container-fluid">
+        <div class="title-page mx-auto mb-4 text-center">
+        <h1 class="m-0">I miei progetti</h1>
+    </div>
       <div class="row">
        <Card v-for="project in store.projects" :project="project"/>
         
@@ -54,5 +57,14 @@
   </script>
   
   <style lang="scss" scoped>
-
+.title-page {
+    padding:0.5rem;
+    border-radius:5px;
+    min-width: 300px;
+    width: 50%;
+    background-color: #929292;
+    h1 {
+        font-size:2rem;
+    }
+}
   </style>
