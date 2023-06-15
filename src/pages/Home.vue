@@ -1,6 +1,10 @@
 <template>
     <Loading v-if="store.loading"/>
     <div v-else class="container-fluid">
+      <div class="container-fluid">
+        <WrapCarousel/>
+      </div>
+      
         <div class="title-page mx-auto mb-4 text-center">
         <h1 class="m-0">I miei progetti</h1>
     </div>
@@ -19,6 +23,7 @@
   </template>
   
   <script>
+  import WrapCarousel from '../components/WrapCarousel.vue';
   import Card from '../components/Card.vue';
   import Loading from '../components/Loading.vue'
   import { store } from '../data/store';
@@ -27,6 +32,7 @@
     components: {
         Card,
         Loading,
+        WrapCarousel,
     },
     data() {
       return {

@@ -58,12 +58,7 @@ export default {
         }
     }
 
-    .project-image {
-        top: 8px;
-        left: 11px;
-        width: 94%;
-        height: 94%;
-    }
+
 }
 
 .monitor {
