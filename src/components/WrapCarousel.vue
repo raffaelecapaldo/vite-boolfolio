@@ -1,36 +1,53 @@
 <template>
-    <Carousel :items-to-show="2.5" :wrap-around="true">
-      <Slide v-for="slide in 5" :key="slide">
+  <Carousel :autoplay="3000" :items-to-show="2.5" :wrap-around="true">
+    <Slide v-for="project in showcase" :key="slide">
         <div class="carousel__item">
-          <div class="box position-relative">
-        <img class="img-fluid" src="https://wallpapers.com/images/hd/red-forest-trees-n8z3bf3dv0b2cj6w.jpg" alt="">
-        <div class="text px-3">
-          <p>Progetto in vetrina</p>
+        <div class="box position-relative">
+          <img class="img-fluid" :src="project.image_url" alt="">
+          <div class="text px-3">
+            <p>{{ project.name }}</p>
+          </div>
         </div>
       </div>
-      </div>
-      </Slide>
-  
-      <template #addons>
-        <Navigation />
-      </template>
-    </Carousel>
-  </template>
+    </Slide>
+
+    <template #addons>
+      <Navigation />
+    </template>
+  </Carousel>
+</template>
 
 <script>
+import axios from 'axios';
+
 import { defineComponent } from 'vue'
 import { Carousel, Navigation, Slide } from 'vue3-carousel'
 
 import 'vue3-carousel/dist/carousel.css'
-
+import { store } from '../data/store';
 export default defineComponent({
+
   name: 'WrapCarousel',
   components: {
     Carousel,
     Slide,
     Navigation,
   },
+  data() {
+    return {
+      store,
+      apiShowcase: 'http://localhost:8000/api/showcase',
+      showcase: [],
+    }
+  },
+  mounted() {
+    axios.get(this.apiShowcase).then((res) => {
+      this.showcase = res.data.results;
+    }
+    )
+  }
 })
+
 </script>
 
 <style lang="scss" scoped>
@@ -41,9 +58,8 @@ export default defineComponent({
   color: #fff;
   padding: 2ch;
   position: relative;
-  border-image: 
-    url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 0H8v4H4v4H0v8h4v4h4v4h8v-4h4v-4h4V8h-4V4h-4V0zm0 4v4h4v8h-4v4H8v-4H4V8h4V4h8z' fill='%230038FF'/%3E%3C/svg%3E")
-    8 stretch;
+  border-image:
+    url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 0H8v4H4v4H0v8h4v4h4v4h8v-4h4v-4h4V8h-4V4h-4V0zm0 4v4h4v8h-4v4H8v-4H4V8h4V4h8z' fill='%230038FF'/%3E%3C/svg%3E") 8 stretch;
 }
 
 .box:before {
@@ -60,7 +76,7 @@ p {
   margin: 0;
 }
 
-p + p {
+p+p {
   margin-top: 1ch;
 }
 
@@ -70,11 +86,10 @@ a {
 }
 
 .text {
-  position:absolute;
-  bottom:0;
-  left:19px;
-  right:19px;
+  position: absolute;
+  bottom: 0;
+  left: 19px;
+  right: 19px;
   background-color: #929292
 }
-
 </style>
