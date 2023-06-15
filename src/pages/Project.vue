@@ -58,6 +58,10 @@
       background-color: $buttonscolor;
       border-color:$bgcolor;
       margin-bottom:30px;
+      transition:0.3s;
+      &:hover {
+            background-color: darkblue;
+        }
     }
     .project-image {
         img {

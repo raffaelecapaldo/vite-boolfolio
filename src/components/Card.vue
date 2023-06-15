@@ -1,6 +1,6 @@
 <template>
     <div class="col-12 pe-1 col-md-4 col-lg-3 col-md-4 col-sm-6 col-xxl-2 d-flex justify-content-center mb-5">
-        <div class="card" style="width: 22rem;">
+        <div @mouseenter="this.$refs.MatrixDescription.animateText()" class="card" style="width: 22rem;">
             <div class="monitor">
                 <img class="inside-image" :src="project.image_url" alt="">
             </div>
@@ -13,7 +13,7 @@
                 </div>
                 <div class="buttons d-flex justify-content-center">
                     <router-link :to="{ name: 'Project', params: { slug: project.slug } }" class="btn btn-primary">
-                        Visualizza
+                        <MatrixDescription ref="MatrixDescription" :description="'Visualizza'" />
                     </router-link>
                 </div>
             </div>
@@ -41,6 +41,7 @@ export default {
 .card {
     background-color: $darkgreen;
     color: $lightgreen;
+    cursor:crosshair;
 
 
     .card-title {
@@ -51,6 +52,10 @@ export default {
         width: 200px;
         background-color: $buttonscolor;
         border-color: $bgcolor;
+        transition:0.3s;
+        &:hover {
+            background-color: darkblue;
+        }
     }
 
     .project-image {
