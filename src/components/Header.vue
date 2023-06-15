@@ -8,7 +8,7 @@
                     </div>
                     <div class="navlinks d-flex gap-2">
                         <li> <router-link class="nav-link" :to="{ name: 'home' }">Home</router-link></li>
-                        <li> <router-link class="nav-link" to="chi-sono">Chi sono</router-link></li>
+                        <li> <a class="nav-link" href="http://localhost:8000">Admin</a></li>
                     </div>
                 </nav>
             </div>
